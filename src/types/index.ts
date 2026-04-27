@@ -9,7 +9,7 @@ export type Activity = {
   disciplineId: string;
   name: string;
   points: number;
-  isPenalty: boolean;
+  hasCounter: boolean;
 };
 
 export type ActivityEntry = {

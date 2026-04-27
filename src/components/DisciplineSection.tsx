@@ -30,7 +30,7 @@ function DisciplineSection({ discipline, activities, getEntry, onToggle, onIncre
             name={activity.name}
             points={activity.points}
             checked={checked}
-            withCounter={activity.isPenalty}
+            withCounter={activity.hasCounter}
             count={entry?.count ?? 0}
             onToggle={() => onToggle(activity.id)}
             onIncrement={() => onIncrement(activity.id)}
