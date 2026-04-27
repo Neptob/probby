@@ -36,6 +36,7 @@ export function saveActivities(activities: Activity[]): void {
 
 export function getDayLogs(): DayLog[] {
   const raw = localStorage.getItem(KEYS.dayLogs);
+  // to use seed data for testing, import DEFAULT_DAY_LOGS from "./defaults" and return it here instead of []
   if (raw === null) return [];
   return JSON.parse(raw) as DayLog[];
 }
@@ -76,6 +77,12 @@ export function saveTodayLog(log: DayLog): void {
     logs.push(log);
   }
   saveDayLogs(logs);
+}
+
+// reset
+
+export function resetData(): void {
+  Object.values(KEYS).forEach(key => localStorage.removeItem(key))
 }
 
 // save/load data

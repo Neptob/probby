@@ -16,8 +16,3 @@ Track your skills and habits over time. Log practice sessions, visualise your gr
 - React Router
 - Tailwind CSS
 - Recharts
-
-## Run locally
-
-npm install
-npm run dev
