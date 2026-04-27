@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { getUserProfile, getDayLogs, getActivities } from "../store";
+import { getDayLogs, getActivities } from "../store";
+import { useUserProfile } from "../context/UserProfileContext";
 import type { DayLog, Activity } from "../types";
 
 function calculateTotalXP(logs: DayLog[], activities: Activity[]): number {
@@ -14,11 +15,19 @@ function calculateTotalXP(logs: DayLog[], activities: Activity[]): number {
   );
 }
 
+function getXPForLevel(level: number): number {
+  const early = [8, 14, 18, 20, 22, 26, 28, 30, 32, 35]
+  if (level <= 10) return early[level - 1]
+  if (level <= 20) return 35
+  if (level >= 30) return 56
+  return Math.round(35 + ((level - 20) / 10) * 21)
+}
+
 function getLevelInfo(totalXP: number) {
   let level = 1;
   let accumulated = 0;
   while (true) {
-    const xpForThisLevel = Math.floor(100 * Math.pow(1.5, level - 1));
+    const xpForThisLevel = getXPForLevel(level);
     if (accumulated + xpForThisLevel > totalXP) {
       return {
         level,
@@ -32,7 +41,7 @@ function getLevelInfo(totalXP: number) {
 }
 
 function Header() {
-  const [profile] = useState(getUserProfile());
+  const { profile } = useUserProfile()
   const [logs] = useState(getDayLogs());
   const [activities] = useState(getActivities());
 
@@ -61,7 +70,7 @@ function Header() {
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-white font-semibold text-sm truncate">
-          {profile.name || "Adventurer"}
+          {profile.name || "Determinated User"}
         </p>
         <div className="flex items-center gap-2 mt-1">
           <div className="flex-1 h-1.5 bg-gray-700 rounded-full overflow-hidden">
