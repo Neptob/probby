@@ -10,10 +10,10 @@ type NavItem = {
 };
 
 const items: NavItem[] = [
-  { to: "/", label: "Today", Icon: CalendarCheck },
-  { to: "/history", label: "History", Icon: Clock },
-  { to: "/progress", label: "Progress", Icon: TrendingUp },
-  { to: "/settings", label: "Settings", Icon: Settings },
+  { to: "/", label: "Oggi", Icon: CalendarCheck },
+  { to: "/history", label: "Cronologia", Icon: Clock },
+  { to: "/progress", label: "Progressi", Icon: TrendingUp },
+  { to: "/settings", label: "Impostazioni", Icon: Settings },
 ];
 
 function BottomNav() {

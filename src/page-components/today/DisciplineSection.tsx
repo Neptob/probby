@@ -1,5 +1,5 @@
-import type { Discipline, Activity, ActivityEntry } from '../types'
-import ActivityRow from './ActivityRow'
+import type { Discipline, Activity, ActivityEntry } from '../../types'
+import ActivityRow from '../../components/ActivityRow'
 
 type DisciplineSectionProps = {
   discipline: Discipline

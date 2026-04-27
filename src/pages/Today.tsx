@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getDisciplines, getActivities, getTodayLog, saveTodayLog } from '../store'
 import type { ActivityEntry } from '../types'
-import DisciplineSection from '../components/DisciplineSection'
+import DisciplineSection from '../page-components/today/DisciplineSection'
 
 function Today() {
   const [disciplines] = useState(getDisciplines())
@@ -45,7 +45,7 @@ function Today() {
   return (
     <main className="pb-20 pt-4 px-4">
       <h1 className="text-white font-bold text-xl mb-4">
-        {new Date().toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' })}
+        {new Date().toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' }).replace(/\b\w/g, c => c.toUpperCase())}
       </h1>
 
       {disciplines.map(discipline => (
